@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./layout.css" />
+    <link rel="stylesheet" href="./header.css" />
+    <link rel="icon" href="./icons/projectsIcon.png" />
+    <title>Admin Projects</title>
+  </head>
+  <body>
+    <header>
+      <div id="admin">
+        <a href="./adminIndex.html" class="layouttext">Admin</a>
+      </div>
+      <div id="resume">
+        <a href="./adminResume.html" class="layouttext">Resume</a>
+      </div>
+      <div id="projects">
+        <a href="./adminProjects.html" class="layouttext">Projects</a>
+      </div>
+      <div id="contact">
+        <a href="./adminContact.html" class="layouttext">Contact</a>
+      </div>
+      <div id="social">
+        <a href="./adminSocial.html" class="layouttext">Social</a>
+      </div>
+      <div id="logout">
+        <a href="./adminLogout.html" class="layouttext">Logout</a>
+      </div>
+    </header>
+    <section>
+      <textarea id="contentValue" cols="30" rows="6" placeholder="My Projects" style="grid-area: ff/ff/ff/fs"></textarea>
+      <input id="submit" type="submit" value="Submit" onclick="submitProjects()" style="grid-area: sf" />
+    </section>
+    <script type="text/javascript">
+      function submitProjects() {
+        let projects = document.getElementById('contentValue').value;
+        let file = new File([projects], 'project.txt', {type: 'text/plain'});
+        let url = URL.createObjectURL(file);
+        let a = document.createElement('a');
+        a.href = url;
+        a.download = file.name;
+        a.click();
+      }
+    </script>
+  </body>
+</html>

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./layout.css" />
+    <link rel="stylesheet" href="./header.css" />
+    <link rel="icon" href="./icons/resumeIcon.png" />
+    <title>Admin Resume</title>
+  </head>
+  <body>
+    <header>
+      <div id="admin">
+        <a href="./adminIndex.html" class="layouttext">Admin</a>
+      </div>
+      <div id="resume">
+        <a href="./adminResume.html" class="layouttext">Resume</a>
+      </div>
+      <div id="projects">
+        <a href="./adminProjects.html" class="layouttext">Projects</a>
+      </div>
+      <div id="contact">
+        <a href="./adminContact.html" class="layouttext">Contact</a>
+      </div>
+      <div id="social">
+        <a href="./adminSocial.html" class="layouttext">Social</a>
+      </div>
+      <div id="logout">
+        <a href="./adminLogout.html" class="layouttext">Logout</a>
+      </div>
+    </header>
+    <section>
+      <textarea id="edu" cols="30" rows="6" placeholder="Educational Qualifications" style="grid-area: ff"></textarea>
+      <textarea id="skill" cols="30" rows="6" placeholder="Skill Set" style="grid-area: fs"></textarea>
+      <textarea id="awards" cols="30" rows="6" placeholder="Awards/Recognitions" style="grid-area: sf"></textarea>
+      <textarea id="work" cols="30" rows="6" placeholder="Work Experience" style="grid-area: ss"></textarea>
+      <textarea id="referees" cols="30" rows="6" placeholder="Referees" style="grid-area: tf"></textarea>
+      <div style="display: grid">
+        <input type="submit" value="Submit" onclick="submitResume()" style="grid-area: ts; width: 100px; height: 40px; place-self: initial" />
+      </div>
+    </section>
+    <script type="text/javascript">
+      function submitResume() {
+        let edu = document.getElementById('edu').value;
+        let skill = document.getElementById('skill').value;
+        let awards = document.getElementById('awards').value;
+        let work = document.getElementById('work').value;
+        let referees = document.getElementById('referees').value;
+        let file = new File([edu, '\n', skill, '\n', awards, '\n', work, '\n', referees], 'foo.txt', {type: 'text/plain'});
+        let url = URL.createObjectURL(file);
+        let a = document.createElement('a');
+        a.href = url;
+        a.download = 'resume.txt';
+        a.click();
+      }
+    </script>
+  </body>
+</html>

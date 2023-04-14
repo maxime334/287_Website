@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./layout.css" />
+    <link rel="stylesheet" href="./header.css" />
+    <link rel="icon" href="./icons/socialIcon.png" />
+    <title>Admin Social</title>
+    <style>
+      .sociallinks {
+        align-self: center;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <div id="admin">
+        <a href="./adminIndex.html" class="layouttext">Admin</a>
+      </div>
+      <div id="resume">
+        <a href="./adminResume.html" class="layouttext">Resume</a>
+      </div>
+      <div id="projects">
+        <a href="./adminProjects.html" class="layouttext">Projects</a>
+      </div>
+      <div id="contact">
+        <a href="./adminContact.html" class="layouttext">Contact</a>
+      </div>
+      <div id="social">
+        <a href="./adminSocial.html" class="layouttext">Social</a>
+      </div>
+      <div id="logout">
+        <a href="./adminLogout.html" class="layouttext">Logout</a>
+      </div>
+    </header>
+    <section>
+      <input class="sociallinks" id="social1" type="text" placeholder="Social Link 1" />
+      <input class="sociallinks" id="social2" type="text" placeholder="Social Link 2" />
+      <input class="sociallinks" id="social3" type="text" placeholder="Social Link 3" />
+      <input type="submit" value="Submit" onclick="submitSocial()" />
+    </section>
+    <script type="text/javascript">
+      function submitSocial() {
+        let social1 = document.getElementById('social1').value;
+        let social2 = document.getElementById('social2').value;
+        let social3 = document.getElementById('social3').value;
+        let file = new File([social1 + '\n' + social2 + '\n' + social3], 'social.txt', {type: 'text/plain'});
+        let url = URL.createObjectURL(file);
+        a = document.createElement('a');
+        a.href = url;
+        a.download = file.name;
+        a.click();
+      }
+    </script>
+  </body>
+</html>

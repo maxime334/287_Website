@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./layout.css" />
+    <link rel="stylesheet" href="./header.css" />
+    <link rel="icon" href="./icons/admin.png" />
+    <title>Admin Index</title>
+    <style>
+      #main > #prostat {
+        grid-area: ff;
+      }
+      #main > #briefbio {
+        grid-area: fs;
+      }
+      #main > #submit {
+        grid-area: sf;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <div id="admin">
+        <a href="./adminIndex.html" class="layouttext">Admin</a>
+      </div>
+      <div id="resume">
+        <a href="./adminResume.html" class="layouttext">Resume</a>
+      </div>
+      <div id="projects">
+        <a href="./adminProjects.html" class="layouttext">Projects</a>
+      </div>
+      <div id="contact">
+        <a href="./adminContact.html" class="layouttext">Contact</a>
+      </div>
+      <div id="social">
+        <a href="./adminSocial.html" class="layouttext">Social</a>
+      </div>
+      <div id="logout">
+        <a href="./adminLogout.html" class="layouttext">Logout</a>
+      </div>
+    </header>
+    <section>
+      <textarea id="profstat" cols="30" rows="6" placeholder="Professional Statement"></textarea>
+      <textarea id="briefbio" cols="30" rows="6" placeholder="Brief Biography"></textarea>
+      <div style="grid-area: sf">
+        <input id="submit" type="submit" name="submitButton" onclick="submitIndex()" value="Submit" style="width: 100px; height: 40px" />
+      </div>
+      <script>
+        function submitIndex() {
+          let content1 = document.getElementById('profstat').value;
+          let content2 = document.getElementById('briefbio').value;
+          let file = new File([content1, '\n', content2], 'index.txt', {type: 'text/plain'});
+          let url = URL.createObjectURL(file);
+          a = document.createElement('a');
+          a.href = url;
+          a.download = file.name;
+          a.click(); // We download the link
+        }
+      </script>
+    </section>
+  </body>
+</html>

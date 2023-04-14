@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./layout.css" />
+    <link rel="stylesheet" href="./header.css" />
+    <link rel="icon" href="./icons/contactIcon.png" />
+    <title>Admin Contact</title>
+    <style>
+      #submit {
+        width: 100px;
+        height: 40px;
+        grid-area: ff;
+        justify-self: self-end;
+        align-self: center;
+        margin-right: 4px;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <div id="admin">
+        <a href="./adminIndex.html" class="layouttext">Admin</a>
+      </div>
+      <div id="resume">
+        <a href="./adminResume.html" class="layouttext">Resume</a>
+      </div>
+      <div id="projects">
+        <a href="./adminProjects.html" class="layouttext">Projects</a>
+      </div>
+      <div id="contact">
+        <a href="./adminContact.html" class="layouttext">Contact</a>
+      </div>
+      <div id="social">
+        <a href="./adminSocial.html" class="layouttext">Social</a>
+      </div>
+      <div id="logout">
+        <a href="./adminLogout.html" class="layouttext">Logout</a>
+      </div>
+    </header>
+    <section>
+      <div style="grid-area: ff; border: 2px solid black"></div>
+      <div style="grid-area: sf; border-left: 2px solid black; border-right: 2px solid black"></div>
+      <input id="file" type="file" style="grid-area: ff; justify-self: center; align-self: center" />
+      <input id="submit" type="submit" value="ReadMessage" onclick="readMessages()" />
+      <p id="result" style="grid-area: sf; margin-left: 10px"><i>Message</i></p>
+    </section>
+    <script>
+      function readMessages() {
+        let fileEle = document.getElementById('file');
+        let paraEle = document.getElementById('result');
+        let file = fileEle.files[0];
+        let fileReader = new FileReader();
+        fileReader.onload = function () {
+          paraEle.innerHTML = '<i>' + fileReader.result + '</i>';
+        };
+        fileReader.onerror = function () {
+          alert('Error while reading the input text file!');
+        };
+        fileReader.readAsText(file, 'UTF-8');
+      }
+    </script>
+  </body>
+</html>
